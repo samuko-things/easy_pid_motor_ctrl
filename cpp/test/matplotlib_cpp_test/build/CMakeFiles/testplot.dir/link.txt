@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testplot.dir/src/testplot.cpp.o -o testplot  /usr/lib/x86_64-linux-gnu/libpython3.10.so 

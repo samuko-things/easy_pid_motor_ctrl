@@ -1,0 +1,4 @@
+/home/samuko/cpp_dev/serial/build/CMakeFiles/serial.dir
+/home/samuko/cpp_dev/serial/build/CMakeFiles/serial_example.dir
+/home/samuko/cpp_dev/serial/build/CMakeFiles/edit_cache.dir
+/home/samuko/cpp_dev/serial/build/CMakeFiles/rebuild_cache.dir
