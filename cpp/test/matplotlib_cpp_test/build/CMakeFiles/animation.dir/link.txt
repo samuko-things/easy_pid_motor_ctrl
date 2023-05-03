@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/animation.dir/src/animation.cpp.o -o animation  /usr/lib/x86_64-linux-gnu/libpython3.10.so 

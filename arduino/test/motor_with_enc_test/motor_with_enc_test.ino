@@ -27,7 +27,7 @@ void encoderPinsSetup() {
 }
 
 float round_dp(float val, int dp) {
-  float rounded_val = (int)((val * pow(10, dp)) + 0.5);
+  float rounded_val = (long)((val * pow(10, dp)) + 0.5);
   return (float)rounded_val / pow(10, dp);
 }
 

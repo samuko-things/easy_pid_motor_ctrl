@@ -1,5 +1,5 @@
-CMakeFiles/testplot.dir/src/testplot.cpp.o: \
- /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/src/testplot.cpp \
+CMakeFiles/animation.dir/src/animation.cpp.o: \
+ /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/src/animation.cpp \
  /usr/include/stdc-predef.h \
  /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/include/matplotlibcpp.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
@@ -346,4 +346,6 @@ CMakeFiles/testplot.dir/src/testplot.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/bits/signal_ext.h
+ /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
+ /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
+ /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h

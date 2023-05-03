@@ -18,6 +18,9 @@ def draw_circle():
   input_ang_deg = np.linspace( 0 , 360 , 360)
   
   figure, axes = plt.subplots( 1 )
+  axes.set_xlim(-0.5, 0.5)
+  axes.set_ylim(-0.5, 0.5)
+  axes.set_aspect( 1 )
   
   prev_time = time.time()
   
@@ -27,19 +30,15 @@ def draw_circle():
     b_data = radius * np.sin( ang_deg * np.pi / 180 )
 
     if show_animation:
-      # clear all axes
-      plt.cla()
+      # # clear all axes
+      # plt.cla()
       
-      # for stopping simulation with the esc key.
-      plt.gcf().canvas.mpl_connect('key_release_event',
-              lambda event: [exit(0) if event.key == 'escape' else None])
+      # # for stopping simulation with the esc key.
+      # plt.gcf().canvas.mpl_connect('key_release_event',
+      #         lambda event: [exit(0) if event.key == 'escape' else None])
       
       axes.plot( A, B )
       axes.plot( [0, a_data], [0, b_data] , 'ro-', linewidth=5)
-      axes.set_aspect( 1 )
-      
-      axes.set_xlim(-0.5, 0.5)
-      axes.set_ylim(-0.5, 0.5)
       
       axes.set_title("Angle = " + str(int(ang_deg)))
       

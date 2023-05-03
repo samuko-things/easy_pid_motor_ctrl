@@ -1,4 +1,4 @@
-# Install script for directory: /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test
+# Install script for directory: /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

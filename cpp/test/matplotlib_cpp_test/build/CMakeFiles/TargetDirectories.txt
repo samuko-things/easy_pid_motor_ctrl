@@ -1,3 +1,4 @@
-/home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles/testplot.dir
-/home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles/edit_cache.dir
-/home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles/rebuild_cache.dir
+/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles/testplot.dir
+/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles/animation.dir
+/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles/edit_cache.dir
+/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles/rebuild_cache.dir

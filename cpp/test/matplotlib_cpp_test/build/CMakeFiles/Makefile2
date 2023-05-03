@@ -54,16 +54,17 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test
+CMAKE_SOURCE_DIR = /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build
+CMAKE_BINARY_DIR = /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/testplot.dir/all
+all: CMakeFiles/animation.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/testplot.dir/clean
+clean: CMakeFiles/animation.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,14 +83,14 @@ clean: CMakeFiles/testplot.dir/clean
 CMakeFiles/testplot.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testplot.dir/build.make CMakeFiles/testplot.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testplot.dir/build.make CMakeFiles/testplot.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles --progress-num=1,2 "Built target testplot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles --progress-num=3,4 "Built target testplot"
 .PHONY : CMakeFiles/testplot.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testplot.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testplot.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles 0
 .PHONY : CMakeFiles/testplot.dir/rule
 
 # Convenience name for target.
@@ -99,6 +101,32 @@ testplot: CMakeFiles/testplot.dir/rule
 CMakeFiles/testplot.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testplot.dir/build.make CMakeFiles/testplot.dir/clean
 .PHONY : CMakeFiles/testplot.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/animation.dir
+
+# All Build rule for target.
+CMakeFiles/animation.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles --progress-num=1,2 "Built target animation"
+.PHONY : CMakeFiles/animation.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/animation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/animation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles 0
+.PHONY : CMakeFiles/animation.dir/rule
+
+# Convenience name for target.
+animation: CMakeFiles/animation.dir/rule
+.PHONY : animation
+
+# clean rule for target.
+CMakeFiles/animation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/clean
+.PHONY : CMakeFiles/animation.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

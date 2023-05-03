@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test
+CMAKE_SOURCE_DIR = /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build
+CMAKE_BINARY_DIR = /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/learn_cpp_cmake/matplotlib-test/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/Documents/easy_pid_motor_ctrl/cpp/test/matplotlib_cpp_test/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,6 +129,43 @@ testplot/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testplot.dir/build.make CMakeFiles/testplot.dir/build
 .PHONY : testplot/fast
 
+#=============================================================================
+# Target rules for targets named animation
+
+# Build rule for target.
+animation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 animation
+.PHONY : animation
+
+# fast build rule for target.
+animation/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/build
+.PHONY : animation/fast
+
+src/animation.o: src/animation.cpp.o
+.PHONY : src/animation.o
+
+# target to build an object file
+src/animation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/src/animation.cpp.o
+.PHONY : src/animation.cpp.o
+
+src/animation.i: src/animation.cpp.i
+.PHONY : src/animation.i
+
+# target to preprocess a source file
+src/animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/src/animation.cpp.i
+.PHONY : src/animation.cpp.i
+
+src/animation.s: src/animation.cpp.s
+.PHONY : src/animation.s
+
+# target to generate assembly for a file
+src/animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/animation.dir/build.make CMakeFiles/animation.dir/src/animation.cpp.s
+.PHONY : src/animation.cpp.s
+
 src/testplot.o: src/testplot.cpp.o
 .PHONY : src/testplot.o
 
@@ -161,7 +198,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... animation"
 	@echo "... testplot"
+	@echo "... src/animation.o"
+	@echo "... src/animation.i"
+	@echo "... src/animation.s"
 	@echo "... src/testplot.o"
 	@echo "... src/testplot.i"
 	@echo "... src/testplot.s"
