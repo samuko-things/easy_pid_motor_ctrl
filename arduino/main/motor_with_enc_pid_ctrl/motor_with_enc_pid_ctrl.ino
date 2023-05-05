@@ -364,11 +364,11 @@ void serialGetReqSendRes() {
 
 
 //pls do not adjust to less than 1000
-unsigned long prevSerialComTime, sampleSerialComTime = 5; //ms -> (1000/sampleTime) hz
+unsigned long prevSerialComTime, sampleSerialComTime = 4; //ms -> (1000/sampleTime) hz
 unsigned long prevExecTime, sampleExecTime = 5; //ms -> (1000/sampleExecTime) hz
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   encoderInit();
 
@@ -381,7 +381,7 @@ void setup() {
   prevExecTime = millis();
   
   //  motorA.sendPWM(90);
-  //  motorB.sendPWM(50);
+  //  motorB.sendPWM(70);
 }
 
 

@@ -30,7 +30,7 @@ import math
 
 
 
-ser = serial.Serial('/dev/ttyUSB0', 9800, timeout=0.1)
+ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=0.1)
 time.sleep(1)
 serCommSpeed = 0.05
 
@@ -310,11 +310,11 @@ def getMotorData():
 
 
 
-while True:
+for i in range(1000):
+  t = time.time()
   tickCount, angPos, frequency, angVel = getAllMotorBData()
   print('motor B data = ',tickCount, angPos, frequency, angVel)
-  print()
-  time.sleep(0.005)
+  print(time.time()-t)
   
 
 print('q entered. Exiting the program')

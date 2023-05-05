@@ -21,14 +21,13 @@ a = []
 b = []
 
 fig, ax = plt.subplots()
-# ln, = ax.plot([], [])
-
+ln, = ax.plot([], [])
 
 
 def init():
   ax.set_xlim(-0.4, 0.4)
   ax.set_ylim(-0.4, 0.4)
-  # return ln,
+  return ln,
 
 
 
@@ -40,11 +39,12 @@ def update(circle_data):
   
   a.append(circle_data[0])
   b.append(circle_data[1])
-  # ax.set_data(a, b)
+  ln.set_data(a, b)
 
-  ax.plot(a,b)
+  # ax.plot(a,b)
 
   print(time.time() - prev_time)
+  return ln
 
 ani = FuncAnimation(fig, update, frames=circle_data,
                     init_func=init, blit=True, interval=10)
