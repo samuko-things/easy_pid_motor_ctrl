@@ -32,6 +32,17 @@ class MotorControl {
       return dir;
     }
 
+    void test() {
+      for (int pwmVal = -255; pwmVal <= 255; pwmVal += 5) {
+        sendPWM(pwmVal);
+        delayMs(250);
+      }
+      for (int pwmVal = 255; pwmVal >= -255; pwmVal -= 5) {
+        sendPWM(pwmVal);
+        delayMs(250);
+      }
+    }
+
   private:
     int in1Pin, in2Pin, enPin;
     int dir = 1;
@@ -54,18 +65,10 @@ class MotorControl {
       digitalWrite(in2Pin, LOW);
     }
 
+    void delayMs(int ms) {
+      for (int i = 0; i < ms; i += 1) {
+        delayMicroseconds(1000);
+      }
+    }
+
 };
-
-
-
-//////////////////////////////////////////////////////////////
-// motor A H-Bridge Connection
-int IN1 = 7, IN2 = 8, enA = 5;
-// motor B H-Bridge Connection
-int IN3 = 11, IN4 = 12, enB = 6;
-
-MotorControl motor[2] {
-  MotorControl(IN1, IN2, enA),
-  MotorControl(IN3, IN4, enB)
-};
-//////////////////////////////////////////////////////////////

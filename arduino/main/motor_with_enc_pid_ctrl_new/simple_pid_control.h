@@ -4,7 +4,7 @@ class SimplePID {
   public:
     SimplePID(float Kp, float Ki, float Kd, float out_min, float out_max) {
       reset();
-
+      
       kp = Kp;
       ki = Ki;
       kd = Kd;
@@ -46,7 +46,8 @@ class SimplePID {
       outMin = out_min;
     }
 
-    void startTime(){
+    void begin(){
+      reset();
       lastTime = micros();
     }
 
@@ -62,12 +63,11 @@ class SimplePID {
         errorInt = errorInt + (error * dt / 1000000.00);
       }
 
+      output = (kp * error) + (ki * errorInt) + (kd * errorDot);
       if(outMin<output && output<outMax){
         isOutputClamped = false;
-        output = (kp * error) + (ki * errorInt) + (kd * errorDot);
       } else {
         isOutputClamped = true;
-        output = (kp * error) + (ki * errorInt) + (kd * errorDot);
         output = constrain(output, outMin, outMax);
       }
       
@@ -103,12 +103,14 @@ class SimplePID {
 
 // // initialize PID with parameters
 // float kp = 12, ki = 2, kd = 0.5, outMinPwm = -250.0, outMaxPwm = 250.0; 
+// float target = 0.456, output; 
 // SimplePID myPID(kp, ki, kd, outMinPwm, outMaxPwm);
 //
 //unsigned long pidPrevTime, pidSampleTime = 10; // in ms (i.e 1000/pidSampleTime in Hz)
 //void setup() {
 //  // you may also change the setting of some PID parameters (if u like)
-//  myPID.startTime(); //this is important - the PID start tracking time.
+//
+//  myPID.begin(); //this is important - the PID start tracking time.
 //  pidPrevTime = millis();
 //}
 //
@@ -125,7 +127,7 @@ class SimplePID {
 //    sendPWM((int)pwmOut); // e.g a function you wrote to send the output PWM to a motor via an H-Bridge
 //    /*########################*/
 //
-//    prevTime = millis();
+//    pidPrevTime = millis();
 //  }
 //
 //}

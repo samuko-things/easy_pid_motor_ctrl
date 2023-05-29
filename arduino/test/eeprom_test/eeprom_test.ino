@@ -2,8 +2,8 @@
 void setup() {
   // put your setup code here, to run once:
   int KPA_POS_ADDR = 0;
-  float f = 0.7623, x = 0.0;
-  Serial.begin(9600);
+  bool f = true, x = false;
+  Serial.begin(115200);
 
   delay(1000);
   Serial.println(sizeof(f));
@@ -11,16 +11,22 @@ void setup() {
   EEPROM.put(4, x);
 
   delay(2000);
-  float a, b;
+  int a, b;
   EEPROM.get(KPA_POS_ADDR, a);
+  Serial.println(a);
+
+  EEPROM.put(KPA_POS_ADDR, x);
   // EEPROM.get(4, b);
 
-  EEPROM.get(4, b);
+  EEPROM.get(KPA_POS_ADDR, b);
+//  if(b != 1){
+//    Serial.println("false");
+//  }
 
-  Serial.println(a,4);
-  Serial.println(b,4);
+  
+  Serial.println(b);
 
-  Serial.println(EEPROM.length());
+//  Serial.println(EEPROM.length());
 
 }
 
