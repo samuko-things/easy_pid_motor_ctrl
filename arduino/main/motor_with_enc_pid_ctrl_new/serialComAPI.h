@@ -75,16 +75,16 @@ void sendFullMotorBData(){
 
 
 
-void receiveMotorAPwm(int val){
+void getMotorAPwm(int val){
   motorA.sendPWM(val);
   Serial.println('1');
 }
-void receiveMotorBPwm(int val){
+void getMotorBPwm(int val){
   motorB.sendPWM(val);
   Serial.println('1');
 }
 
-void receiveBothMotorPwm(int valA, int valB){
+void getBothMotorPwm(int valA, int valB){
   motorB.sendPWM(valA);
   motorB.sendPWM(valB);
   Serial.println('1');
@@ -93,19 +93,17 @@ void receiveBothMotorPwm(int valA, int valB){
 
 
 
-void receiveMotorATargetVal(float val){
+void getMotorATargetVal(float val){
   targetA = val;
-//  Serial.println('1');
-  Serial.println(val, 4);
+  Serial.println('1');
 }
 
-void receiveMotorBTargetVal(float val){
+void getMotorBTargetVal(float val){
   targetB = val;
-//  Serial.println('1');
-  Serial.println(val, 4);
+  Serial.println('1');
 }
 
-void receiveBothMotorTargetVals(float valA, float valB){
+void getBothMotorTargetVals(float valA, float valB){
   targetA = valA;
   targetB = valB;
   Serial.println('1');
@@ -280,13 +278,13 @@ void serialGetReqSendRes() {
       else if (dataBuffer[0]=="ALLA") sendFullMotorAData();
       else if (dataBuffer[0]=="ALLB") sendFullMotorBData();
 
-      else if (dataBuffer[0]=="pwm") receiveBothMotorPwm(constrain(dataBuffer[1].toInt(), 0, 255),constrain(dataBuffer[2].toInt(), 0, 255));
-      else if (dataBuffer[0]=="pwmA") receiveMotorAPwm(constrain(dataBuffer[1].toInt(), 0, 255));
-      else if (dataBuffer[0]=="pwmB") receiveMotorBPwm(constrain(dataBuffer[1].toInt(), 0, 255));
+      else if (dataBuffer[0]=="pwm") getBothMotorPwm(constrain(dataBuffer[1].toInt(), 0, 255),constrain(dataBuffer[2].toInt(), 0, 255));
+      else if (dataBuffer[0]=="pwmA") getMotorAPwm(constrain(dataBuffer[1].toInt(), 0, 255));
+      else if (dataBuffer[0]=="pwmB") getMotorBPwm(constrain(dataBuffer[1].toInt(), 0, 255));
 
-      else if (dataBuffer[0]=="val") receiveBothMotorTargetVals(dataBuffer[1].toFloat(), dataBuffer[2].toFloat());
-      else if (dataBuffer[0]=="valA") receiveMotorATargetVal(dataBuffer[1].toFloat());
-      else if (dataBuffer[0]=="valB") receiveMotorBTargetVal(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="val") getBothMotorTargetVals(dataBuffer[1].toFloat(), dataBuffer[2].toFloat());
+      else if (dataBuffer[0]=="valA") getMotorATargetVal(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="valB") getMotorBTargetVal(dataBuffer[1].toFloat());
 
       else if (dataBuffer[0]=="pprA") setEncAppr(dataBuffer[1].toInt());
       else if (dataBuffer[0]=="pprB") setEncBppr(dataBuffer[1].toInt());
@@ -300,7 +298,7 @@ void serialGetReqSendRes() {
       else if (dataBuffer[0]=="kdB") setMotorBkd(dataBuffer[1].toFloat());
 
       else if (dataBuffer[0]=="pid") setPIDmode(dataBuffer[1].toInt());
-      else if (dataBuffer[0]=="i2c") setI2Caddress(dataBuffer[1].toInt());
+      else if (dataBuffer[0]=="i2c") setI2Caddress(constrain(dataBuffer[1].toInt(), 0, 127));
 
       else if (dataBuffer[0]=="reset") resetEEPROM();
     }
