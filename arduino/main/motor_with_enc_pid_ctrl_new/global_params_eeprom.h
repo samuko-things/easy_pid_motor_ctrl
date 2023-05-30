@@ -18,7 +18,7 @@ float targetB = 0.00;
 float outputB;
 
 // check if in PID or PWM mode
-int pidMode = 0; // true-PID, false-PWM
+bool pidMode = true; // true-PID MODE, false-SETUP MODE
 
 // initial i2cAddress
 int i2cAddress = 0;
@@ -34,9 +34,9 @@ int KD_A_ADDRESS = 16;
 int KD_B_ADDRESS = 20;
 int PPR_A_ADDRESS = 24;
 int PPR_B_ADDRESS = 28;
-int PIDMODE_ADDRESS = 32;
-int I2C_ADDRESS = 36;
-int FIRST_TIME_ADDRESS = 40;
+int I2C_ADDRESS = 32;
+int FIRST_TIME_ADDRESS = 36;
+//int PIDMODE_ADDRESS = 40;
 
 
 
@@ -107,55 +107,56 @@ float getKD_B(){
 
 
 void setPPR_A(int pprA){
-  EEPROM.put(PPR_A_ADDRESS, pprA);
+  EEPROM.put(PPR_A_ADDRESS, (float)pprA);
 }
 int getPPR_A(){
-  int pprA;
+  float pprA;
   EEPROM.get(PPR_A_ADDRESS, pprA);
-  return pprA;
+  return (int)pprA;
 }
 
 
 void setPPR_B(int pprB){
-  EEPROM.put(PPR_B_ADDRESS, pprB);
+  EEPROM.put(PPR_B_ADDRESS, (float)pprB);
 }
 int getPPR_B(){
-  int pprB;
+  float pprB;
   EEPROM.get(PPR_B_ADDRESS, pprB);
-  return pprB;
-}
-
-
-
-void setPIDMODE(int pidMode){
-  EEPROM.put(PIDMODE_ADDRESS, pidMode);
-}
-int getPIDMODE(){
-  int pidMode;
-  EEPROM.get(PIDMODE_ADDRESS, pidMode);
-  return pidMode;
+  return (int)pprB;
 }
 
 
 
 void setI2CADDRESS(int i2cAddress){
-  EEPROM.put(I2C_ADDRESS, i2cAddress);
+  EEPROM.put(I2C_ADDRESS, (float)i2cAddress);
 }
 int getI2CADDRESS(){
-  int i2cAddress;
-  EEPROM.put(I2C_ADDRESS, i2cAddress);
-  return i2cAddress;
+  float address;
+  EEPROM.get(I2C_ADDRESS, address);
+  return (int)address;
 }
 
 
 void setFIRST_TIME(int val){
-  EEPROM.put(FIRST_TIME_ADDRESS, val);
+  EEPROM.put(FIRST_TIME_ADDRESS, (float)val);
 }
 int getFIRST_TIME(){
-  int firstTime;
-  EEPROM.put(I2C_ADDRESS, firstTime);
-  return firstTime;
+  float firstTime;
+  EEPROM.get(FIRST_TIME_ADDRESS, firstTime);
+  return (int)firstTime;
 }
+
+
+
+
+//void setPIDMODE(int pidMode){
+//  EEPROM.put(PIDMODE_ADDRESS, pidMode);
+//}
+//int getPIDMODE(){
+//  int pidMode;
+//  EEPROM.get(PIDMODE_ADDRESS, pidMode);
+//  return pidMode;
+//}
 
 
 
@@ -176,22 +177,22 @@ void resetAllParamsToZero(){
   setPPR_A(0);
   setPPR_B(0);
 
-  setPIDMODE(0);
+//  setPIDMODE(0);
 
   setI2CADDRESS(0);
 }
 
 
 void initEEPROMparamsStorage(){
-  int isFirstTime, val = 11111;
+  int isFirstTime, setupCode = 11111; // please do not change
   isFirstTime = getFIRST_TIME();
-  if(isFirstTime != val){ //if not equal to 11111
-    setFIRST_TIME(val);
+  if(isFirstTime != setupCode){ //if not equal to 11111
+    setFIRST_TIME(setupCode);
     resetAllParamsToZero();
-    Serial.println("setting up eeprom for the first time");
+    Serial.println("initializing eeprom for the first time");
   }
   else{
-    Serial.println("no need for first time eeprom setup");
+    Serial.println("eeprom has already been initialized");
   }
 }
 
@@ -212,7 +213,7 @@ void updateGlobalParamsFromEERPOM(){
   encA_ppr = getPPR_A();
   encB_ppr = getPPR_B();
 
-  pidMode = getPIDMODE();
+//  pidMode = getPIDMODE();
 
   i2cAddress = getI2CADDRESS();
 

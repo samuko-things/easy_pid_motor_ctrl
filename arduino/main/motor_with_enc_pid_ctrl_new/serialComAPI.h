@@ -95,12 +95,14 @@ void receiveBothMotorPwm(int valA, int valB){
 
 void receiveMotorATargetVal(float val){
   targetA = val;
-  Serial.println('1');
+//  Serial.println('1');
+  Serial.println(val, 4);
 }
 
 void receiveMotorBTargetVal(float val){
   targetB = val;
-  Serial.println('1');
+//  Serial.println('1');
+  Serial.println(val, 4);
 }
 
 void receiveBothMotorTargetVals(float valA, float valB){
@@ -108,7 +110,123 @@ void receiveBothMotorTargetVals(float valA, float valB){
   targetB = valB;
   Serial.println('1');
 }
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
+
+///////////// API for updating EEPROM Parameters //////////////
+
+void setEncAppr(int ppr){
+  if(!pidMode){
+    setPPR_A(ppr);
+    encA_ppr = getPPR_A();
+    Serial.println(encA_ppr);
+  }
+  else Serial.println(-1);
+  
+}
+
+void setEncBppr(int ppr){
+  if(!pidMode){
+    setPPR_B(ppr);
+    encB_ppr = getPPR_B();
+    Serial.println(encB_ppr);
+  }
+  else Serial.println(-1);
+}
+
+
+
+void setMotorAkp(float kp){
+  if(!pidMode){
+    setKP_A(kp);
+    kpA = getKP_A();
+    Serial.println(kpA, 2);
+  }
+  else Serial.println(-1);
+}
+
+void setMotorAki(float ki){
+  if(!pidMode){
+    setKI_A(ki);
+    kiA = getKI_A();
+    Serial.println(kiA, 2);
+  }
+  else Serial.println(-1);
+}
+
+void setMotorAkd(float kd){
+  if(!pidMode){
+    setKD_A(kd);
+    kdA = getKD_A();
+    Serial.println(kdA, 2); 
+  }
+  else Serial.println(-1);
+}
+
+
+
+
+void setMotorBkp(float kp){
+  if(!pidMode){
+    setKP_B(kp);
+    kpB = getKP_B();
+    Serial.println(kpB, 2);
+  }
+  else Serial.println(-1);
+}
+
+void setMotorBki(float ki){
+  if(!pidMode){
+    setKI_B(ki);
+    kiB = getKI_B();
+    Serial.println(kiB, 2); 
+  }
+  else Serial.println(-1);
+}
+
+void setMotorBkd(float kd){
+  if(!pidMode){
+    setKD_B(kd);
+    kdB = getKD_B();
+    Serial.println(kdB, 2);
+  }
+  else Serial.println(-1);
+}
+
+
+
+
+void setPIDmode(int pidmode){
+  if(pidmode == 0){
+    pidMode = false;
+    Serial.println(0);
+  } else if (pidmode == 1) {
+    pidMode = true;
+    Serial.println(1);
+  }
+}
+
+void setI2Caddress(int address){
+  if(!pidMode){
+    setI2CADDRESS(address);
+    i2cAddress = getI2CADDRESS();
+    Serial.println(i2cAddress);
+  }
+  else Serial.println(-1);
+}
+
+
+void resetEEPROM(){
+  if(!pidMode){
+    setFIRST_TIME(0);
+    Serial.println(getFIRST_TIME()); 
+  }
+  else Serial.println(-1);
+}
+
+///////////////////////////////////////////////////////
 
 
 
@@ -118,11 +236,7 @@ void receiveBothMotorTargetVals(float valA, float valB){
 
 
 
-
-
-
-
-///////////////// SERIAL COMMUNICATION //////////////////////
+///////////////// SERIAL COMMUNICATION API //////////////////////
 String msg = "", msgBuffer, dataBuffer[3];
 
 void serialGetReqSendRes() {
@@ -173,6 +287,22 @@ void serialGetReqSendRes() {
       else if (dataBuffer[0]=="val") receiveBothMotorTargetVals(dataBuffer[1].toFloat(), dataBuffer[2].toFloat());
       else if (dataBuffer[0]=="valA") receiveMotorATargetVal(dataBuffer[1].toFloat());
       else if (dataBuffer[0]=="valB") receiveMotorBTargetVal(dataBuffer[1].toFloat());
+
+      else if (dataBuffer[0]=="pprA") setEncAppr(dataBuffer[1].toInt());
+      else if (dataBuffer[0]=="pprB") setEncBppr(dataBuffer[1].toInt());
+
+      else if (dataBuffer[0]=="kpA") setMotorAkp(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="kiA") setMotorAki(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="kdA") setMotorAkd(dataBuffer[1].toFloat());
+
+      else if (dataBuffer[0]=="kpB") setMotorBkp(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="kiB") setMotorBki(dataBuffer[1].toFloat());
+      else if (dataBuffer[0]=="kdB") setMotorBkd(dataBuffer[1].toFloat());
+
+      else if (dataBuffer[0]=="pid") setPIDmode(dataBuffer[1].toInt());
+      else if (dataBuffer[0]=="i2c") setI2Caddress(dataBuffer[1].toInt());
+
+      else if (dataBuffer[0]=="reset") resetEEPROM();
     }
 
   }

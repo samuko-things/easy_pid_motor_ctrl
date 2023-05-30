@@ -113,24 +113,6 @@ void pidInit() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 unsigned long prevSerialAPIComTime, sampleSerialAPIComTime = 4; //ms -> (1000/sampleTime) hz
 unsigned long pidPrevTime, pidSampleTime = 100; // in ms (i.e 1000/pidSampleTime in Hz)
 
@@ -139,13 +121,13 @@ void setup() {
   Serial.setTimeout(2);
   
   // update global params with eeprom contents
-  updateGlobalParamsFromEERPOM();
+//  updateGlobalParamsFromEERPOM();
   /////////////////////////////////////////////
   
   encoderInit();
   pidInit();
   /* motor needs no initialization as it used no global variable dependent on eeprom*/
-  
+  Serial.println("setup finished");
   prevSerialAPIComTime = millis();
   pidPrevTime = millis();
 
@@ -177,13 +159,13 @@ void loop() {
 
     /* compute PID output with and send control command*/
     
-    if (pidMode != 0){
-      outputA = pidMotorA.compute(targetA, encA.getAngPos()); // targetA is among the global params
-      outputB = pidMotorB.compute(targetB, encB.getAngPos()); // targetB is among the global params
-  
-      motorA.sendPWM((int)outputA);
-      motorB.sendPWM((int)outputB); 
-    }
+//    if (pidMode){
+//      outputA = pidMotorA.compute(targetA, encA.getAngPos()); // targetA is among the global params
+//      outputB = pidMotorB.compute(targetB, encB.getAngPos()); // targetB is among the global params
+//  
+//      motorA.sendPWM((int)outputA);
+//      motorB.sendPWM((int)outputB); 
+//    }
 
     /*########################*/
 
