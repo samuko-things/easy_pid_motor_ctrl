@@ -1,76 +1,59 @@
 #include <Wire.h>
 
+float maxFloat = 99999.888, minFloat = -99999.888;
+long maxLong =  2147000000, minLong = -2147000000;
+
 ///////// DIFFERENT TASK FOR SERIAL AND I2C COMMUNICATION //////////
-String sendMotorATick(){
-  return String(encA.tickCount);
-}
-String sendMotorBTick(){
-  return String(encB.tickCount);
-}
-String sendMotorAFreq(){
-  return String(encA.frequency, 4);
-}
-String sendMotorBFreq(){
-  return String(encB.frequency, 4);
-}
-
-String sendMotorAPos(){
-  return String(encA.getAngPos(), 4);
-}
-String sendMotorBPos(){
-  return String(encB.getAngPos(), 4);
-}
-String sendMotorAVel(){
-  return String(encA.getAngVel(), 4);
-}
-String sendMotorBVel(){
-  return String(encB.getAngVel(), 4);
+String sendMotorsTick(){
+  String data = String(constrain(encA.tickCount, minLong, maxLong));
+  data += ",";
+  data += String(constrain(encB.tickCount, minLong, maxLong));
+  return data;
 }
 
 
-String setMotorAPwm(int val){
+String sendMotorsFreq(){
+  String data = String(constrain(encA.frequency, minFloat, maxFloat), 3);
+  data += ",";
+  data += String(constrain(encB.frequency, minFloat, maxFloat), 3);
+  return data;
+}
+
+
+String sendMotorsPos(){
+  String data = String(constrain(encA.getAngPos(), minFloat, maxFloat), 3);
+  data += ",";
+  data += String(constrain(encB.getAngPos(), minFloat, maxFloat), 3);
+  return data;
+}
+
+
+String sendMotorsVel(){
+  String data = String(constrain(encA.getAngVel(), minFloat, maxFloat), 3);
+  data += ",";
+  data += String(constrain(encB.getAngVel(), minFloat, maxFloat), 3);
+  return data;
+}
+
+
+String setMotorsPwm(int valA, int valB){
   if(!pidMode){
-    motorA.sendPWM(val);
-    return String(val);
+    motorA.sendPWM(valA);
+    motorB.sendPWM(valB);
+    return "1";
   }
-  else return "false";
-  
+  else return "0";
 }
-String setMotorBPwm(int val){
-  if(!pidMode){
-    motorB.sendPWM(val);
-    return String(val);
-  }
-  else return "false";
-}
-String setMotorATarget(float val){
-  if(pidMode){
-    targetA = val;
-    return String(val, 4);
-  }
-  else return "false";
-  
-}
-String setMotorBTarget(float val){
+
+
+String setMotorsTarget(float valA, float valB){
   if (pidMode){
-    targetB = val;
-    return String(val, 4);
+    targetA = valA;
+    targetB = valB;
+    return "1";
   }
-  else return "false";
-  
+  else return "0";
 }
-
-
-//String setMotorPwm(int valA, int valB){
-//  motorA.sendPWM(valA);
-//  motorB.sendPWM(valB);
-//  return "true";
-//}
-//String setMotorTarget(float valA, float valB){
-//  targetA = valA;
-//  targetB = valB;
-//  return "true";
-//}
 
 
 String setPidMode(int mode){
@@ -80,100 +63,125 @@ String setPidMode(int mode){
     motorB.sendPWM(0);
     targetA = 0.00;
     targetB = 0.00;
-    return "true";
+    return "1";
   } else if (mode == 1) {
     pidMode = true;
     motorA.sendPWM(0);
     motorB.sendPWM(0);
     targetA = 0.00;
     targetB = 0.00;
-    return "true";
+    return "1";
   }
   else {
-    return "false";
+    return "0";
   }
 }
-
-
-
+String sendPidMode(){
+  return String(pidMode);
+}
 
 
 String setEncAppr(int ppr){
   if(!pidMode){
     setPPR_A(ppr);
     encA_ppr = getPPR_A();
-    return String(encA_ppr);
+    return "1";
   }
-  else return "false";
-  
+  else return "0";
 }
+String sendEncAppr(){ 
+  return String(encA_ppr);
+}
+
 
 String setEncBppr(int ppr){
   if(!pidMode){
     setPPR_B(ppr);
     encB_ppr = getPPR_B();
-    return String(encB_ppr);
+    return "1";
   }
-  else return "false";
+  else return "0";
 }
-
+String sendEncBppr(){ 
+  return String(encB_ppr);
+}
 
 
 String setMotorAkp(float kp){
   if(!pidMode){
     setKP_A(kp);
     kpA = getKP_A();
-    return String(kpA, 2);
+    return "1";
   }
-  else return "false";
+  else return "0";
 }
+String sendMotorAkp(){
+  return String(kpA,3);
+}
+
 
 String setMotorAki(float ki){
   if(!pidMode){
     setKI_A(ki);
     kiA = getKI_A();
-    return String(kiA, 2);
+    return "1";
   }
-  else return "false";
+  else return "0";
 }
+String sendMotorAki(){
+  return String(kiA,3);
+}
+
 
 String setMotorAkd(float kd){
   if(!pidMode){
     setKD_A(kd);
     kdA = getKD_A();
-    return String(kdA, 2); 
+    return "1"; 
   }
-  else return "false";
+  else return "0";
 }
-
-
+String sendMotorAkd(){
+  return String(kdA,3);
+}
 
 
 String setMotorBkp(float kp){
   if(!pidMode){
     setKP_B(kp);
     kpB = getKP_B();
-    return String(kpB, 2);
+    return "1";
   }
-  else return "false";
+  else return "0";
 }
+String sendMotorBkp(){
+  return String(kpB,3);
+}
+
 
 String setMotorBki(float ki){
   if(!pidMode){
     setKI_B(ki);
     kiB = getKI_B();
-    return String(kiB, 2); 
+    return "1"; 
   }
-  else return "false";
+  else return "0";
 }
+String sendMotorBki(){
+  return String(kiB,3);
+}
+
 
 String setMotorBkd(float kd){
   if(!pidMode){
     setKD_B(kd);
     kdB = getKD_B();
-    return String(kdB, 2);
+    return "1";
   }
-  else return "false";
+  else return "0";
+}
+String sendMotorBkd(){
+  return String(kdB,3);
 }
 
 
@@ -182,18 +190,22 @@ String setI2Caddress(int address){
     setI2CADDRESS(address);
     i2cAddress = getI2CADDRESS();
     Wire.begin(i2cAddress);                
-    return String(i2cAddress);
+    return "1";
   }
-  else return "false";
+  else return "0";
+}
+String sendI2Caddress(){
+  return String(i2cAddress);
 }
 
 
 String resetEEPROM(){
   if(!pidMode){
     setFIRST_TIME(0);
-    return String(getFIRST_TIME()); 
+//    return String(getFIRST_TIME()); 
+    return "1";
   }
-  else return "false";
+  else return "0";
 }
 ///////////////////////////////////////////
 
@@ -234,16 +246,17 @@ void i2cSlaveSendData(){
     i2c_msg = "";
   }
   else {
-    msg = "false";
+    msg = "0";
+    i2c_msg = "";
   }
-  char charArray[10];
+  char charArray[msg.length() + 1];
   msg.toCharArray(charArray, msg.length() + 1);
   Wire.write(charArray, msg.length());                
 }
 
 
 
-String i2cMsg = "", i2cMsgBuffer, i2cDataBuffer[2];
+String i2cMsg = "", i2cMsgBuffer, i2cDataBuffer[3];
 
 void i2cSlaveReceiveData(int dataSizeInBytes){
   int indexPos = 0, i=0;
@@ -271,44 +284,27 @@ void i2cSlaveReceiveData(int dataSizeInBytes){
       i += 1;
      } while (indexPos >= 0);
   }
+
   
-  if(i2cDataBuffer[0] == "posA"){
-    i2c_msg = sendMotorAPos();
-  }
-  else if (i2cDataBuffer[0] == "posB") {
-    i2c_msg = sendMotorBPos();
-  }
+  if(i2cDataBuffer[0] == "pos"){
+    i2c_msg = sendMotorsPos();
+  } 
   
-  else if (i2cDataBuffer[0] == "velA") {
-    i2c_msg = sendMotorAVel();
-  }
-  else if (i2cDataBuffer[0] == "velB") {
-    i2c_msg = sendMotorBVel();
+  else if (i2cDataBuffer[0] == "vel") {
+    i2c_msg = sendMotorsVel();
   }
   
-  else if (i2cDataBuffer[0] == "pwmA") {
-    i2c_msg = setMotorAPwm(constrain(i2cDataBuffer[1].toInt(), 0, 255));
+  else if (i2cDataBuffer[0] == "pwm") {
+    i2c_msg = setMotorsPwm(constrain(i2cDataBuffer[1].toInt(), -255, 255), constrain(i2cDataBuffer[2].toInt(), -255, 255));
   }
-  else if (i2cDataBuffer[0] == "pwmB") {
-    i2c_msg = setMotorBPwm(constrain(i2cDataBuffer[1].toInt(), 0, 255));
+
+  else if (i2cDataBuffer[0] == "tag") {
+    i2c_msg = setMotorsTarget(i2cDataBuffer[1].toFloat(), i2cDataBuffer[2].toFloat());
   }
-  
-  else if (i2cDataBuffer[0] == "tagA") {
-    i2c_msg = setMotorATarget(i2cDataBuffer[1].toFloat());
-  }
-  else if (i2cDataBuffer[0] == "tagB") {
-    i2c_msg = setMotorBTarget(i2cDataBuffer[1].toFloat());
-  }
-  
-//  else if (i2cDataBuffer[0] == "pwm") {
-//    i2c_msg = setMotorPwm(constrain(i2cDataBuffer[1].toInt(), 0, 255), constrain(i2cDataBuffer[2].toInt(), 0, 255));
-//  }
-//  else if (i2cDataBuffer[0] == "tag") {
-//    i2c_msg = setMotorTarget(i2cDataBuffer[1].toFloat(), i2cDataBuffer[2].toFloat());
-//  }
 
   else if (i2cDataBuffer[0] == "mode") {
-    i2c_msg = setPidMode(i2cDataBuffer[1].toInt());
+    if (i2cDataBuffer[1]=="") i2c_msg = sendPidMode();
+    else i2c_msg = setPidMode(i2cDataBuffer[1].toInt());
   }
 
   
@@ -385,148 +381,122 @@ void serialReceiveAndSendData() {
 
 
     if (serDataBuffer[0] != ""){
-      if(serDataBuffer[0] == "posA"){
-        ser_msg = sendMotorAPos();
+      if(serDataBuffer[0] == "pos"){
+        ser_msg = sendMotorsPos();
         Serial.println(ser_msg);
         ser_msg = "";
       }
-      else if (serDataBuffer[0] == "posB") {
-        ser_msg = sendMotorBPos();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-      else if (serDataBuffer[0] == "velA") {
-        ser_msg = sendMotorAVel();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-      else if (serDataBuffer[0] == "velB") {
-        ser_msg = sendMotorBVel();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-
-
-
-      else if (serDataBuffer[0] == "tickA") {
-        ser_msg = sendMotorATick();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-      else if (serDataBuffer[0] == "tickB") {
-        ser_msg = sendMotorBTick();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-      else if (serDataBuffer[0] == "freqA") {
-        ser_msg = sendMotorAFreq();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-      else if (serDataBuffer[0] == "freqB") {
-        ser_msg = sendMotorBFreq();
-        Serial.println(ser_msg);
-        ser_msg = "";
-      }
-
-
       
-      else if (serDataBuffer[0] == "pwmA") {
-        ser_msg = setMotorAPwm(constrain(serDataBuffer[1].toInt(), 0, 255));
+      else if (serDataBuffer[0] == "vel") {
+        ser_msg = sendMotorsVel();
         Serial.println(ser_msg);
         ser_msg = "";
       }
-      else if (serDataBuffer[0] == "pwmB") {
-        ser_msg = setMotorBPwm(constrain(serDataBuffer[1].toInt(), 0, 255));
+
+      else if (serDataBuffer[0] == "tick") {
+        ser_msg = sendMotorsTick();
         Serial.println(ser_msg);
         ser_msg = "";
       }
-      else if (serDataBuffer[0] == "tagA") {
-        ser_msg = setMotorATarget(serDataBuffer[1].toFloat());
+
+      else if (serDataBuffer[0] == "freq") {
+        ser_msg = sendMotorsFreq();
         Serial.println(ser_msg);
         ser_msg = "";
       }
-      else if (serDataBuffer[0] == "tagB") {
-        ser_msg = setMotorBTarget(serDataBuffer[1].toFloat());
+
+      else if (serDataBuffer[0] == "pwm") {
+        ser_msg = setMotorsPwm(constrain(serDataBuffer[1].toInt(), -255, 255), constrain(serDataBuffer[2].toInt(), -255, 255));
         Serial.println(ser_msg);
         ser_msg = "";
       }
-//      else if (serDataBuffer[0] == "pwm") {
-//        ser_msg = setMotorPwm(constrain(serDataBuffer[1].toInt(), 0, 255), constrain(serDataBuffer[2].toInt(), 0, 255));
-//        Serial.println(ser_msg);
-//        ser_msg = "";
-//      }
-//      else if (serDataBuffer[0] == "tag") {
-//        ser_msg = setMotorTarget(serDataBuffer[1].toFloat(), serDataBuffer[2].toFloat());
-//        Serial.println(ser_msg);
-//        ser_msg = "";
-//      }
+
+      else if (serDataBuffer[0] == "tag") {
+        ser_msg = setMotorsTarget(serDataBuffer[1].toFloat(), serDataBuffer[2].toFloat());
+        Serial.println(ser_msg);
+        ser_msg = "";
+      }
 
       else if (serDataBuffer[0] == "mode") {
-        ser_msg = setPidMode(serDataBuffer[1].toInt());
+        if (serDataBuffer[1]=="") ser_msg = sendPidMode();
+        else ser_msg = setPidMode(serDataBuffer[1].toInt());
         Serial.println(ser_msg);
         ser_msg = "";
       }
-
       
       else if (serDataBuffer[0] == "pprA") {
-        ser_msg = setEncAppr(serDataBuffer[1].toInt());
+        if (serDataBuffer[1]=="") ser_msg = sendEncAppr();
+        else ser_msg = setEncAppr(serDataBuffer[1].toInt());
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "pprB") {
-        ser_msg = setEncBppr(serDataBuffer[1].toInt());
+        if (serDataBuffer[1]=="") ser_msg = sendEncBppr();
+        else ser_msg = setEncBppr(serDataBuffer[1].toInt());
         Serial.println(ser_msg);
         ser_msg = "";
       }
 
-    
       else if (serDataBuffer[0] == "kpA") {
-        ser_msg = setMotorAkp(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorAkp();
+        else ser_msg = setMotorAkp(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "kiA") {
-        ser_msg = setMotorAki(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorAki();
+        else ser_msg = setMotorAki(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "kdA") {
-        ser_msg = setMotorAkd(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorAkd();
+        else ser_msg = setMotorAkd(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
 
-    
       else if (serDataBuffer[0] == "kpB") {
-        ser_msg = setMotorBkp(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorBkp();
+        else ser_msg = setMotorBkp(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "kiB") {
-        ser_msg = setMotorBki(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorBki();
+        else ser_msg = setMotorBki(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "kdB") {
-        ser_msg = setMotorBkd(serDataBuffer[1].toFloat());
+        if (serDataBuffer[1]=="") ser_msg = sendMotorBkd();
+        else ser_msg = setMotorBkd(serDataBuffer[1].toFloat());
         Serial.println(ser_msg);
         ser_msg = "";
       }
-
     
       else if (serDataBuffer[0] == "i2c") {
-        ser_msg = setI2Caddress(constrain(serDataBuffer[1].toInt(), 0, 127));
+        if (serDataBuffer[1]=="") ser_msg = sendI2Caddress();
+        else ser_msg = setI2Caddress(constrain(serDataBuffer[1].toInt(), 0, 127));
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
       else if (serDataBuffer[0] == "reset") {
         ser_msg = resetEEPROM();
         Serial.println(ser_msg);
         ser_msg = "";
       }
+      
     } else {
-      Serial.println("false");
+      ser_msg = "0";
+      Serial.println(ser_msg);
+      ser_msg = "";
     }
   }
   

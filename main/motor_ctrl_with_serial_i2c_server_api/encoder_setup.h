@@ -25,15 +25,21 @@ public:
   }
 
   float getAngPos() {
-    return (2.00 * PI * (float)tickCount) / (float)pulsePerRev;
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+      return (2.00 * PI * (float)tickCount) / (float)pulsePerRev;
+    }  
   }
 
   float getAbsAngPosDeg() {
-    return absAngDeg((2.00 * PI * (float)tickCount) / (float)pulsePerRev);
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+      return absAngDeg((2.00 * PI * (float)tickCount) / (float)pulsePerRev);
+    }
   }
 
   float getAngVel() {
-    return 2.00 * PI * frequency;
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+      return 2.00 * PI * frequency;
+    }
   }
 
   void resetFrequency() {

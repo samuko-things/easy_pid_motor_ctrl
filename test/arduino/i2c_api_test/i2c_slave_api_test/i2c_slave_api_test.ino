@@ -1,22 +1,7 @@
+
 #include <Wire.h>
 
 // i2c slave uno
-
-#include <Wire.h>
-void setup()
-{
-  Wire.begin(4);                
-  Wire.onReceive(slaveReceiveData);
-  Wire.onRequest(slaveSendData);
-  
-  Serial.begin(9600);
-}
-
-void loop()
-{
-  delay(5);
-}
-
 
 
 
@@ -24,60 +9,57 @@ void loop()
 
 ///////////////////////////////////////////
 float posA = 35.8934, posB = 2.6734;
-float velA = 3.1234, velB = 0.1236;
+float velA = 3.1234, velB = 99999.888;
 
 
 
 String sendMotorAPos(){
-  return String(posA, 4);
+  return String(posA, 3);
 }
 String sendMotorBPos(){
-  return String(posB, 4);
+  return String(posB, 3);
 }
 String sendMotorAVel(){
-  return String(velA, 4);
+  return String(velA, 3);
 }
 String sendMotorBVel(){
-  return String(velA, 4);
+  return String(velB, 3);
 }
 
 
 String setMotorAPwm(int val){
-  Serial.print(val);
+  Serial.println(val);
   return "true";
 }
 String setMotorBPwm(int val){
-  Serial.print(val);
+  Serial.println(val);
   return "true";
 }
 String setMotorATarget(float val){
-  Serial.print(val);
+  Serial.println(val);
   return "true";
 }
 String setMotorBTarget(float val){
-  Serial.print(val);
+  Serial.println(val);
   return "true";
 }
 
 
 String setMotorPwm(int valA, int valB){
-  Serial.print(valA);
+  Serial.println(valA);
   return "true";
 }
 String setMotorTarget(float valA, float valB){
-  Serial.print(valA);
+  Serial.println(valA);
   return "true";
 }
 
 
 String setPidMode(int mode){
-  Serial.print(mode);
+  Serial.println(mode);
   return "true";
 }
 ///////////////////////////////////////////
-
-
-
 
 
 
@@ -109,7 +91,7 @@ void slaveReceiveData(int dataSizeInBytes){
  
   for(int i=0; i<dataSizeInBytes; i+=1){
     char c = Wire.read();
-    msg += c; 	
+    msg += c;   
   }
   
   msg.trim();
@@ -172,4 +154,36 @@ void slaveReceiveData(int dataSizeInBytes){
   dataBuffer[3] = "";
 }
 
-///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+#include <Wire.h>
+void setup()
+{
+  Wire.begin(4);                
+  Wire.onReceive(slaveReceiveData);
+  Wire.onRequest(slaveSendData);
+  
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  delay(5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////

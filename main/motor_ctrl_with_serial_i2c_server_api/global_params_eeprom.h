@@ -2,17 +2,17 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // store encoder pulsePerRev needed by encoder
-int encA_ppr = 0;
-int encB_ppr = 0;
+int encA_ppr = 20;
+int encB_ppr = 20;
 
 // motorA pid control global params needed by pid
-float kpA = 0.0, kiA = 0.0, kdA = 0.0;
+float kpA = 3.094, kiA = 3.094, kdA = 3.094;
 float outMinA = -255.0, outMaxA = 255.0;
 float targetA = 0.00;
 float outputA;
 
 // motorB pid control global params needed by pid
-float kpB = 0.0, kiB = 0.0, kdB = 0.0;
+float kpB = 23.765, kiB = 23.765, kdB = 23.765;
 float outMinB = -255.0, outMaxB = 255.0;
 float targetB = 0.00;
 float outputB;
@@ -21,7 +21,7 @@ float outputB;
 bool pidMode = true; // true-PID MODE, false-SETUP MODE
 
 // initial i2cAddress
-int i2cAddress = 1;
+int i2cAddress = 4;
 
 /////////////////// STORING AND READING PARAMETERS FROM EEPROM /////////////////
 #include <EEPROM.h>
@@ -179,7 +179,7 @@ void resetAllParamsToZero(){
 
 //  setPIDMODE(0);
 
-  setI2CADDRESS(0);
+  setI2CADDRESS(4);
 }
 
 

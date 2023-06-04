@@ -1,4 +1,4 @@
-
+#include <util/atomic.h>
 #include <Wire.h>
 #include "global_params_eeprom.h"
 
@@ -35,7 +35,7 @@ void readEncoderA() {
   encA.freqPerTick = 1000000.00 / (float)(micros() - encA.oldFreqTime);
   encA.oldFreqTime = micros();
 
-  if (digitalRead(encA.dirPin) == HIGH) {
+  if (digitalRead(encA.dirPin) > 0) {
     encA.tickCount += 1;
     encA.frequency = encA.freqPerTick / (float)encA.pulsePerRev;
   } else {
@@ -49,7 +49,7 @@ void readEncoderB() {
   encB.freqPerTick = 1000000.00 / (float)(micros() - encB.oldFreqTime);
   encB.oldFreqTime = micros();
 
-  if (digitalRead(encB.dirPin) == HIGH) {
+  if (digitalRead(encB.dirPin) > 0) {
     encB.tickCount += 1;
     encB.frequency = encB.freqPerTick / (float)encB.pulsePerRev;
   } else {
@@ -121,7 +121,7 @@ void pidInit() {
 
 
 
-unsigned long prevSerialAPIComTime, sampleSerialAPIComTime = 4; //ms -> (1000/sampleTime) hz
+unsigned long prevSerialAPIComTime, sampleSerialAPIComTime = 10; //ms -> (1000/sampleTime) hz
 unsigned long pidPrevTime, pidSampleTime = 100; // in ms (i.e 1000/pidSampleTime in Hz)
 
 
@@ -140,7 +140,7 @@ void setup() {
   encoderInit();
   pidInit();
   /* motor needs no initialization as it used no global variable dependent on eeprom*/
-  Serial.println("setup finished");
+//  Serial.println("setup finished");
   prevSerialAPIComTime = millis();
   pidPrevTime = millis();
 
@@ -162,7 +162,6 @@ void loop() {
     prevSerialAPIComTime = millis();
   }
 /////////////////////////////////////////////////////////////////////
-
 
 
   if ((millis() - pidPrevTime) >= pidSampleTime) {
