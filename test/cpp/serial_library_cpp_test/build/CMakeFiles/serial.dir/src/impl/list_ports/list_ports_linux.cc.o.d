@@ -1,5 +1,5 @@
 CMakeFiles/serial.dir/src/impl/list_ports/list_ports_linux.cc.o: \
- /home/samuko/cpp_dev/serial/src/impl/list_ports/list_ports_linux.cc \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/src/impl/list_ports/list_ports_linux.cc \
  /usr/include/stdc-predef.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -180,7 +180,7 @@ CMakeFiles/serial.dir/src/impl/list_ports/list_ports_linux.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
  /usr/include/linux/close_range.h \
- /home/samuko/cpp_dev/serial/include/serial/serial.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/serial.h \
  /usr/include/c++/11/limits /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /home/samuko/cpp_dev/serial/include/serial/v8stdint.h
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/v8stdint.h

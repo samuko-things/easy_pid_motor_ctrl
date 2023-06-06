@@ -1,4 +1,4 @@
-# Install script for directory: /home/samuko/cpp_dev/serial
+# Install script for directory: /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/samuko/cpp_dev/serial/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

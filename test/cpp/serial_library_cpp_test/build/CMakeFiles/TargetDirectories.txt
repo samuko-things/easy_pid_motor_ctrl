@@ -1,4 +1,5 @@
-/home/samuko/cpp_dev/serial/build/CMakeFiles/serial.dir
-/home/samuko/cpp_dev/serial/build/CMakeFiles/serial_example.dir
-/home/samuko/cpp_dev/serial/build/CMakeFiles/edit_cache.dir
-/home/samuko/cpp_dev/serial/build/CMakeFiles/rebuild_cache.dir
+/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/serial.dir
+/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/serial_example.dir
+/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/serial_test.dir
+/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/edit_cache.dir
+/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/rebuild_cache.dir

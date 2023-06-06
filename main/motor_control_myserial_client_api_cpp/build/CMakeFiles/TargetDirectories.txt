@@ -1,0 +1,4 @@
+/home/samuko/projects/easy_pid_motor_ctrl/main/motor_control_myserial_client_api_cpp/build/CMakeFiles/myserial.dir
+/home/samuko/projects/easy_pid_motor_ctrl/main/motor_control_myserial_client_api_cpp/build/CMakeFiles/myserial_client_api.dir
+/home/samuko/projects/easy_pid_motor_ctrl/main/motor_control_myserial_client_api_cpp/build/CMakeFiles/edit_cache.dir
+/home/samuko/projects/easy_pid_motor_ctrl/main/motor_control_myserial_client_api_cpp/build/CMakeFiles/rebuild_cache.dir

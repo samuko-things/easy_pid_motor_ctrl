@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/samuko/cpp_dev/serial/include
+CXX_INCLUDES = -I/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include
 
 CXX_FLAGS = 
 

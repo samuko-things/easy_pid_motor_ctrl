@@ -136,6 +136,13 @@ void setup() {
   Wire.begin(i2cAddress);                
   Wire.onReceive(i2cSlaveReceiveData);
   Wire.onRequest(i2cSlaveSendData);
+
+  initLed();
+  offLed();
+  delay(1000);
+  onLed();
+  delay(2000);
+  offLed();
   
   encoderInit();
   pidInit();

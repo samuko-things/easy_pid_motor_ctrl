@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/samuko/cpp_dev/serial
+CMAKE_SOURCE_DIR = /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/samuko/cpp_dev/serial/build
+CMAKE_BINARY_DIR = /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/serial/build/CMakeFiles /home/samuko/cpp_dev/serial/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/cpp_dev/serial/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,19 @@ serial_example/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_example.dir/build.make CMakeFiles/serial_example.dir/build
 .PHONY : serial_example/fast
 
+#=============================================================================
+# Target rules for targets named serial_test
+
+# Build rule for target.
+serial_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 serial_test
+.PHONY : serial_test
+
+# fast build rule for target.
+serial_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_test.dir/build.make CMakeFiles/serial_test.dir/build
+.PHONY : serial_test/fast
+
 examples/serial_example.o: examples/serial_example.cc.o
 .PHONY : examples/serial_example.o
 
@@ -165,6 +178,30 @@ examples/serial_example.s: examples/serial_example.cc.s
 examples/serial_example.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_example.dir/build.make CMakeFiles/serial_example.dir/examples/serial_example.cc.s
 .PHONY : examples/serial_example.cc.s
+
+examples/serial_test.o: examples/serial_test.cpp.o
+.PHONY : examples/serial_test.o
+
+# target to build an object file
+examples/serial_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_test.dir/build.make CMakeFiles/serial_test.dir/examples/serial_test.cpp.o
+.PHONY : examples/serial_test.cpp.o
+
+examples/serial_test.i: examples/serial_test.cpp.i
+.PHONY : examples/serial_test.i
+
+# target to preprocess a source file
+examples/serial_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_test.dir/build.make CMakeFiles/serial_test.dir/examples/serial_test.cpp.i
+.PHONY : examples/serial_test.cpp.i
+
+examples/serial_test.s: examples/serial_test.cpp.s
+.PHONY : examples/serial_test.s
+
+# target to generate assembly for a file
+examples/serial_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_test.dir/build.make CMakeFiles/serial_test.dir/examples/serial_test.cpp.s
+.PHONY : examples/serial_test.cpp.s
 
 src/impl/list_ports/list_ports_linux.o: src/impl/list_ports/list_ports_linux.cc.o
 .PHONY : src/impl/list_ports/list_ports_linux.o
@@ -248,9 +285,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... serial"
 	@echo "... serial_example"
+	@echo "... serial_test"
 	@echo "... examples/serial_example.o"
 	@echo "... examples/serial_example.i"
 	@echo "... examples/serial_example.s"
+	@echo "... examples/serial_test.o"
+	@echo "... examples/serial_test.i"
+	@echo "... examples/serial_test.s"
 	@echo "... src/impl/list_ports/list_ports_linux.o"
 	@echo "... src/impl/list_ports/list_ports_linux.i"
 	@echo "... src/impl/list_ports/list_ports_linux.s"

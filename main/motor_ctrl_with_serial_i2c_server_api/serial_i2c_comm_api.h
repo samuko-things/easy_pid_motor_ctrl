@@ -3,6 +3,18 @@
 float maxFloat = 99999.888, minFloat = -99999.888;
 long maxLong =  2147000000, minLong = -2147000000;
 
+void initLed(){
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void onLed(){
+  digitalWrite(LED_BUILTIN, HIGH);
+}
+
+void offLed(){
+  digitalWrite(LED_BUILTIN, LOW);
+}
+
 ///////// DIFFERENT TASK FOR SERIAL AND I2C COMMUNICATION //////////
 String sendMotorsTick(){
   String data = String(constrain(encA.tickCount, minLong, maxLong));
@@ -63,6 +75,7 @@ String setPidMode(int mode){
     motorB.sendPWM(0);
     targetA = 0.00;
     targetB = 0.00;
+    onLed();
     return "1";
   } else if (mode == 1) {
     pidMode = true;
@@ -70,6 +83,7 @@ String setPidMode(int mode){
     motorB.sendPWM(0);
     targetA = 0.00;
     targetB = 0.00;
+    offLed();
     return "1";
   }
   else {

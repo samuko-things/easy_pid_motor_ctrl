@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmyserial.a CMakeFiles/myserial.dir/src/serial.cc.o CMakeFiles/myserial.dir/src/impl/unix.cc.o CMakeFiles/myserial.dir/src/impl/list_ports/list_ports_linux.cc.o
+/usr/bin/ranlib libmyserial.a

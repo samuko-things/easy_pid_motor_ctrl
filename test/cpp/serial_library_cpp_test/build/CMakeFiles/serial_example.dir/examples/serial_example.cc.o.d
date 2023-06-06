@@ -1,5 +1,5 @@
 CMakeFiles/serial_example.dir/examples/serial_example.cc.o: \
- /home/samuko/cpp_dev/serial/examples/serial_example.cc \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/examples/serial_example.cc \
  /usr/include/stdc-predef.h /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -156,7 +156,7 @@ CMakeFiles/serial_example.dir/examples/serial_example.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
  /usr/include/linux/close_range.h \
- /home/samuko/cpp_dev/serial/include/serial/serial.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/serial.h \
  /usr/include/c++/11/limits /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
@@ -164,4 +164,4 @@ CMakeFiles/serial_example.dir/examples/serial_example.cc.o: \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/samuko/cpp_dev/serial/include/serial/v8stdint.h
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/v8stdint.h

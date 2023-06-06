@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/samuko/cpp_dev/serial/examples/serial_example.cc" "CMakeFiles/serial_example.dir/examples/serial_example.cc.o" "gcc" "CMakeFiles/serial_example.dir/examples/serial_example.cc.o.d"
+  "/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/examples/serial_example.cc" "CMakeFiles/serial_example.dir/examples/serial_example.cc.o" "gcc" "CMakeFiles/serial_example.dir/examples/serial_example.cc.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/samuko/cpp_dev/serial/build/CMakeFiles/serial.dir/DependInfo.cmake"
+  "/home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/build/CMakeFiles/serial.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

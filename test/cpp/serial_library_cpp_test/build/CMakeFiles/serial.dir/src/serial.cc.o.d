@@ -1,6 +1,7 @@
 CMakeFiles/serial.dir/src/serial.cc.o: \
- /home/samuko/cpp_dev/serial/src/serial.cc /usr/include/stdc-predef.h \
- /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/src/serial.cc \
+ /usr/include/stdc-predef.h /usr/include/c++/11/algorithm \
+ /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -98,7 +99,7 @@ CMakeFiles/serial.dir/src/serial.cc.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/samuko/cpp_dev/serial/include/serial/serial.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/serial.h \
  /usr/include/c++/11/limits /usr/include/c++/11/string \
  /usr/include/c++/11/bits/stringfwd.h \
  /usr/include/c++/11/bits/char_traits.h \
@@ -174,5 +175,5 @@ CMakeFiles/serial.dir/src/serial.cc.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/samuko/cpp_dev/serial/include/serial/v8stdint.h \
- /home/samuko/cpp_dev/serial/include/serial/impl/unix.h
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/v8stdint.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/impl/unix.h

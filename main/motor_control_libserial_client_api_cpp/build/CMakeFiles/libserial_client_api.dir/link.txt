@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/libserial_client_api.dir/examples/libserial_client_api.cpp.o -o libserial_client_api  -lserial 

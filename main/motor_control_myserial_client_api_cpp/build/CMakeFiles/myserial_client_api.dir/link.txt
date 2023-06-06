@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/myserial_client_api.dir/examples/myserial_client_api.cpp.o -o myserial_client_api  libmyserial.a -lrt -lpthread 

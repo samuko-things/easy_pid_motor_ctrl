@@ -1,6 +1,6 @@
 CMakeFiles/serial.dir/src/impl/unix.cc.o: \
- /home/samuko/cpp_dev/serial/src/impl/unix.cc /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/src/impl/unix.cc \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -223,11 +223,11 @@ CMakeFiles/serial.dir/src/impl/unix.cc.o: \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h /usr/include/linux/tty_flags.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
- /home/samuko/cpp_dev/serial/include/serial/impl/unix.h \
- /home/samuko/cpp_dev/serial/include/serial/serial.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/impl/unix.h \
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/serial.h \
  /usr/include/c++/11/limits /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/cstring \
- /home/samuko/cpp_dev/serial/include/serial/v8stdint.h
+ /home/samuko/projects/easy_pid_motor_ctrl/test/cpp/serial_library_cpp_test/include/serial/v8stdint.h

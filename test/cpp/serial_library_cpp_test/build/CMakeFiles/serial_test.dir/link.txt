@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/serial_test.dir/examples/serial_test.cpp.o -o serial_test  libserial.a -lrt -lpthread 
