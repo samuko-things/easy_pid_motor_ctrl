@@ -48,6 +48,22 @@ String sendMotorsVel(){
 }
 
 
+String sendMotorAData(){
+  String data = String(constrain(encA.getAngPos(), minFloat, maxFloat), 3);
+  data += ",";
+  data += String(constrain(encA.getAngVel(), minFloat, maxFloat), 3);
+  return data;
+}
+
+
+String sendMotorBData(){
+  String data = String(constrain(encB.getAngPos(), minFloat, maxFloat), 3);
+  data += ",";
+  data += String(constrain(encB.getAngVel(), minFloat, maxFloat), 3);
+  return data;
+}
+
+
 String setMotorsPwm(int valA, int valB){
   if(!pidMode){
     motorA.sendPWM(valA);
@@ -415,6 +431,18 @@ void serialReceiveAndSendData() {
 
       else if (serDataBuffer[0] == "freq") {
         ser_msg = sendMotorsFreq();
+        Serial.println(ser_msg);
+        ser_msg = "";
+      }
+
+      else if (serDataBuffer[0] == "dataA") {
+        ser_msg = sendMotorAData();
+        Serial.println(ser_msg);
+        ser_msg = "";
+      }
+
+      else if (serDataBuffer[0] == "dataB") {
+        ser_msg = sendMotorBData();
         Serial.println(ser_msg);
         ser_msg = "";
       }
