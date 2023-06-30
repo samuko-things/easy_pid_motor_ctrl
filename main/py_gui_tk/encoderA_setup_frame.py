@@ -86,24 +86,27 @@ class MotorAPosCanvas(customtkinter.CTkFrame):
     self.myCanvas.after(1, self.draw_motor_ang_pos)
 
   def draw_motor_ang_pos(self):
-    if g.motorAIsOn and g.motorOnDuration < time.time()-g.motorAOnStartTime:
-        isSuccess = g.serClient.send("pwm", 0, 0)
-        if isSuccess:
-          g.motorAIsOn = False
-          # print('Motor off', isSuccess)
-    self.myCanvas.delete(self.line)
-    self.myCanvas.delete(self.mid_circle)
-    g.angPosA, g.angVelA = g.serClient.get("dataA")
-    g.thetaA = round(self.absAngDeg(g.angPosA),2)
+    try:
+      if g.motorAIsOn and g.motorOnDuration < time.time()-g.motorAOnStartTime:
+          isSuccess = g.serClient.send("pwm", 0, 0)
+          if isSuccess:
+            g.motorAIsOn = False
+            # print('Motor off', isSuccess)
+      self.myCanvas.delete(self.line)
+      self.myCanvas.delete(self.mid_circle)
+      g.angPosA, g.angVelA = g.serClient.get("dataA")
+      g.thetaA = round(self.absAngDeg(g.angPosA),2)
 
-    self.line = self.myCanvas.create_line(self.m[0], self.m[1], 
-                                  self.m[0]+self.r*cos(radians(g.thetaA-g.initialThetaA)), 
-                                  self.m[1]+self.r*sin(radians(g.thetaA-g.initialThetaA)),  
-                                  fill='#434242',width=15)
-    self.mid_circle = self.myCanvas.create_oval(180, 160, 220, 200, fill="grey", outline="#434242")
+      self.line = self.myCanvas.create_line(self.m[0], self.m[1], 
+                                    self.m[0]+self.r*cos(radians(g.thetaA-g.initialThetaA)), 
+                                    self.m[1]+self.r*sin(radians(g.thetaA-g.initialThetaA)),  
+                                    fill='#434242',width=15)
+      self.mid_circle = self.myCanvas.create_oval(180, 160, 220, 200, fill="grey", outline="#434242")
 
-    self.angPosDisplayLabelVal.configure(text=f"{g.angPosA}")
-    self.angVelDisplayLabelVal.configure(text=f"{g.angVelA}")
+      self.angPosDisplayLabelVal.configure(text=f"{g.angPosA}")
+      self.angVelDisplayLabelVal.configure(text=f"{g.angVelA}")
+    except:
+      pass
 
     self.myCanvas.after(1, self.draw_motor_ang_pos)
 

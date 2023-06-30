@@ -5,7 +5,7 @@ public:
   int clkPin, dirPin, pulsePerRev;
   volatile long tickCount;
   float prevAngPos, angPos, angVel, freqPerTick, frequency;
-  volatile unsigned long oldFreqTime, checkFreqTime, freqSampleTime=200;
+  volatile unsigned long oldFreqTime, checkFreqTime, freqSampleTime=50;
   long testTickCount = 0;
 
   QuadEncoder(int clk_pin, int dir_pin, int ppr) {

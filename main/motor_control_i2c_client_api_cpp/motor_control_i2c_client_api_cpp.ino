@@ -12,7 +12,7 @@ void delayMs(int ms) {
 //////////////////////////////////////////////////
 
 
-int MotorSlaveAddress = 4;
+int MotorSlaveAddress = 1;
 MotorI2cClient motorClient(MotorSlaveAddress);
 
 bool isSuccessful;
@@ -41,7 +41,7 @@ void setup()
 
   isSuccessful = false;
  
-  isSuccessful = motorClient.send("pwm", 110, 0);
+  isSuccessful = motorClient.send("pwm", 0, 120);
   Serial.println(isSuccessful);
   
   delay(1000);
@@ -61,10 +61,10 @@ void loop()
     /* CODE SHOULD GO IN HERE*/
 
     motorClient.get("vel", velA, velB); // get velocity data and store in velA and velB
-    Serial.println(velA); 
+    Serial.println(velB); 
 
 //    motorClient.get("pos", posA, posB); // get position data and store in posA and posB
-//    Serial.println(posA); 
+//    Serial.println(posB); 
 
 //    Serial.println(motorClient.getParam("mode", paramData)); // get mode param data and store in paramData
     

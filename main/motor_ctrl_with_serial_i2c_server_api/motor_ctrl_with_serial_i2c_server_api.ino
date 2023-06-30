@@ -25,7 +25,7 @@ QuadEncoder encB(encB_clkPin, encB_dirPin, encB_ppr);
 
 void encoderInit() {
   encA.setPulsePerRev(encA_ppr);
-  encA.setPulsePerRev(encA_ppr);
+  encB.setPulsePerRev(encB_ppr);
   
   attachInterrupt(digitalPinToInterrupt(encA.clkPin), readEncoderA, FALLING);
   attachInterrupt(digitalPinToInterrupt(encB.clkPin), readEncoderB, FALLING);
@@ -105,6 +105,7 @@ void pidInit() {
 
 
 //////////////////////////////////////
+#include "eeprom_setup.h"
 #include "serial_i2c_comm_api.h"
 //////////////////////////////////////
 
@@ -130,18 +131,19 @@ void setup() {
   Serial.setTimeout(2);
   
   // update global params with eeprom contents
-//  updateGlobalParamsFromEERPOM();
+  updateGlobalParamsFromEERPOM();
   /////////////////////////////////////////////
+  delay(500);
   
-  Wire.begin(i2cAddress);                
+  Wire.begin(getI2CADDRESS());                
   Wire.onReceive(i2cSlaveReceiveData);
   Wire.onRequest(i2cSlaveSendData);
 
   initLed();
   offLed();
-  delay(1000);
+  delay(500);
   onLed();
-  delay(2000);
+  delay(1000);
   offLed();
   
   encoderInit();
