@@ -60,10 +60,10 @@ class App(customtkinter.CTk):
     self.encBSetupMenuButton.configure(fg_color='transparent', text_color='grey')
   
   def indicate(self, button, page):
-   self.hide_indicators()
-   button.configure(fg_color='transparent', text_color='black')
-   self.delete_pages()
-   page()
+    self.hide_indicators()
+    button.configure(fg_color='transparent', text_color='black')
+    self.delete_pages()
+    page()
 
   def delete_pages(self):
     for frame in self.mainFrame.winfo_children():
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
   #################################################################
   g.serClient = SerialClient('/dev/ttyUSB0', 115200, 0.1)
-  time.sleep(4)
+  time.sleep(5)
   isSuccessful = g.serClient.send("mode", 0) # decativate pid mode (activate pwm mode and parameter settings)
   print(isSuccessful)
   #################################################################
