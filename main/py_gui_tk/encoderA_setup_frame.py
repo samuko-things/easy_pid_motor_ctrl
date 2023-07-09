@@ -17,9 +17,12 @@ def setPwmValA(text):
 
 
 def setEncAppr(text):
-  isSuccessful = g.serClient.send("pprA", float(text))
-  val = int(g.serClient.get("pprA"))
-  g.pprA = val
+  try:
+    isSuccessful = g.serClient.send("pprA", float(text))
+    val = int(g.serClient.get("pprA"))
+    g.pprA = val
+  except:
+    pass
 
   return g.pprA
 
@@ -143,13 +146,13 @@ class EncASetupFrame(customtkinter.CTkFrame):
     self.heading.grid(row=0, column=0, columnspan=3, padx=10, pady=(5,25))
 
     # add set card frame
-    self.setPwmCardFrame = SetDataCardFrame(self, "PPR_A", g.serClient.get("pprA"), set_func=setEncAppr)
+    self.setPwmCardFrame = SetDataCardFrame(self, "PPR_A", int(g.serClient.get("pprA")),placeHolderText="enter new PPR_A", set_func=setEncAppr)
     self.setPwmCardFrame.grid(row=1, column=0, padx=(20,10), pady=10)
 
-    self.setPwmCardFrame = SetDataCardFrame(self, "PWM_A", g.ctrlPwmA, set_func=setPwmValA)
+    self.setPwmCardFrame = SetDataCardFrame(self, "PWM_A", g.ctrlPwmA, placeHolderText="enter new PWM_A",set_func=setPwmValA)
     self.setPwmCardFrame.grid(row=1, column=1, padx=10, pady=10)
 
-    self.setDurationCardFrame = SetDataCardFrame(self, "DURATION", g.motorOnDuration, set_func=setPulseDuration)
+    self.setDurationCardFrame = SetDataCardFrame(self, "DURATION", g.motorOnDuration, placeHolderText="enter new DURATION", set_func=setPulseDuration)
     self.setDurationCardFrame.grid(row=1, column=2, padx=10, pady=10)
 
 

@@ -12,7 +12,7 @@ void delayMs(int ms) {
 //////////////////////////////////////////////////
 
 
-int MotorSlaveAddress = 1;
+int MotorSlaveAddress = 4;
 MotorI2cClient motorClient(MotorSlaveAddress);
 
 bool isSuccessful;

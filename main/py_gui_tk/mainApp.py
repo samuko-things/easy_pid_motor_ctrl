@@ -9,6 +9,7 @@ import customtkinter
 from appGlobals import g
 from encoderA_setup_frame import EncASetupFrame
 from encoderB_setup_frame import EncBSetupFrame
+from other_params_setup_frame import ParamsSetupFrame
 
 
 
@@ -43,6 +44,12 @@ class App(customtkinter.CTk):
                                                         command= lambda: self.indicate(self.encBSetupMenuButton, self.encBsetupPage))
     self.encBSetupMenuButton.grid(row=2, column=0, padx=10, pady=20, ipadx=10, ipady=10)
 
+    self.paramsSetupMenuButton = customtkinter.CTkButton(self.sidebarFrame, text="Other Params", corner_radius=5,
+                                                        font=customtkinter.CTkFont(size=16, weight="bold"),
+                                                        fg_color='transparent', text_color='grey', hover_color='#EEEEEE',
+                                                        command= lambda: self.indicate(self.paramsSetupMenuButton, self.paramsSetupPage))
+    self.paramsSetupMenuButton.grid(row=3, column=0, padx=10, pady=20, ipadx=10, ipady=10)
+
 
     self.mainFrame = customtkinter.CTkFrame(self)
     self.mainFrame.grid(row=0, column=1, padx=5, pady=0, ipadx=0, ipady=0, sticky="nsw")
@@ -58,6 +65,7 @@ class App(customtkinter.CTk):
   def hide_indicators(self):
     self.encASetupMenuButton.configure(fg_color='transparent', text_color='grey')
     self.encBSetupMenuButton.configure(fg_color='transparent', text_color='grey')
+    self.paramsSetupMenuButton.configure(fg_color='transparent', text_color='grey')
   
   def indicate(self, button, page):
     self.hide_indicators()
@@ -77,6 +85,10 @@ class App(customtkinter.CTk):
   def encBsetupPage(self):
     self.encBSetupFrame = EncBSetupFrame(self.mainFrame)
     self.encBSetupFrame.pack()
+  
+  def paramsSetupPage(self):
+    self.paramsSetupFrame = ParamsSetupFrame(self.mainFrame)
+    self.paramsSetupFrame.pack()
 
 
 
